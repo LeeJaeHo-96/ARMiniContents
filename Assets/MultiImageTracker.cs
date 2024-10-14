@@ -63,9 +63,12 @@ public class MultiImageTracker : MonoBehaviour
     [SerializeField] GameObject threeSpade;
     [SerializeField] GameObject twoSpade;
 
-    [SerializeField] GameObject cardF;
-    [SerializeField] GameObject cardS;
+    [SerializeField] GameObject deck;
 
+    [SerializeField] Transform cardF;
+    [SerializeField] Transform cardS;
+
+    
     private void OnEnable()
     {
         imageManager.trackedImagesChanged += OnImageChange;
@@ -93,9 +96,8 @@ public class MultiImageTracker : MonoBehaviour
                     break;
 
                 case "KingHeart":
-                    GameObject kingHeartObj = Instantiate(kingHeart, trackedImage.transform.position, trackedImage.transform.rotation);
-                    kingHeartObj.transform.parent = trackedImage.transform;
-                    transform.LookAt(imageManager.transform.position);
+                    GameObject kingHeartObj = Instantiate(kingHeart, cardF.position, cardF.rotation);
+                    kingHeartObj.transform.parent = cardF;
                     break;
 
                 case "QueenHeart":
@@ -349,6 +351,11 @@ public class MultiImageTracker : MonoBehaviour
                 case "TwoSpade":
                     GameObject twoSpadeObj = Instantiate(twoSpade, trackedImage.transform.position, trackedImage.transform.rotation);
                     twoSpadeObj.transform.parent = trackedImage.transform;
+                    break;
+
+                case "Deck":
+                    GameObject deckObj = Instantiate(deck, trackedImage.transform.position, trackedImage.transform.rotation);
+                    deckObj.transform.parent = trackedImage.transform;
                     break;
             }
         }

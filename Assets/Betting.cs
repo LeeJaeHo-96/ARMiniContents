@@ -18,7 +18,7 @@ public class Betting : MonoBehaviour
 
     public void Update()
     {
-
+        total = GameObject.Find("ChipShoot").GetComponent<Shooter>().total;
         text.text = total.ToString();
     }
 

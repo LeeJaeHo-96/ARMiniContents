@@ -6,7 +6,7 @@ using UnityEngine;
 public class Shooter : MonoBehaviour
 {
     [SerializeField] GameObject shooter;
-    [SerializeField] GameObject chip;
+    [SerializeField] GameObject chip = null;
     [SerializeField] GameObject redChip;
     [SerializeField] float redPrice = 50;
     [SerializeField] GameObject blueChip;
@@ -21,7 +21,7 @@ public class Shooter : MonoBehaviour
 
     private void Start()
     {
-        shooter = GameObject.Find("ChipShoot");
+        shooter = this.gameObject;
         
         total = GameObject.Find("Total").GetComponent<Betting>().total;
     }
@@ -29,42 +29,35 @@ public class Shooter : MonoBehaviour
     public void Redchip()
     {
         chip = redChip;
+        total += redPrice;
+        Debug.Log("레드칩 베팅");
     }
 
     public void Bluechip()
     {
         chip = blueChip;
+        total += bluePrice;
+        Debug.Log("블루칩 베팅");
     }
 
     public void Greenchip()
     {
         chip = greenChip;
+        total += greenPrice;
+        Debug.Log("그린칩 베팅");
     }
     public void Blackchip()
     {
         chip = blackChip;
+        total += blackPrice;
+        Debug.Log("블랙칩 베팅");
     }
     public void OnButtonClicked()
     {
         
             Instantiate(chip, shooter.transform.position, shooter.transform.rotation);
 
-        if (chip = redChip)
-        {
-            total += redPrice;
-        }
-        if (chip = blueChip)
-        {
-            total += bluePrice;
-        }
-        if (chip = greenChip)
-        {
-            total += greenPrice;
-        }
-        if (chip = blackChip)
-        {
-            total += blackPrice;
-        }
+      
 
     }
 
